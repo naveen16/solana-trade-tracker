@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package shredstream;
+
+// Shredstream Proxy Service (main service for receiving entries)
+service ShredstreamProxy {
+  // Subscribe to receive Solana entries in real-time
+  rpc SubscribeEntries(SubscribeEntriesRequest) returns (stream Entry);
+}
+
+// Request to subscribe to entries
+message SubscribeEntriesRequest {
+  // tbd: we may want to add filters here
+}
+
+// Entry message containing serialized Solana entries
+message Entry {
+  // the slot that the entry is from
+  uint64 slot = 1;
+
+  // Serialized bytes of Vec<Entry>: https://docs.rs/solana-entry/latest/solana_entry/entry/struct.Entry.html
+  // This contains Solana entries which include transactions
+  bytes entries = 2;
+}

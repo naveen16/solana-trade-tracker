@@ -1,0 +1,60 @@
+{
+  "name": "fomo-solana-trade-tracker",
+  "version": "1.0.0",
+  "description": "Real-time Solana trade tracker for fomo users via Jito Shredstream",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "test:shredstream": "npm run build && node dist/test/test-shredstream.js",
+    "test:tx-processor": "npm run build && node dist/test/test-transaction-processor.js",
+    "test:trade-analyzer": "npm run build && node --max-old-space-size=4096 dist/test/test-trade-analyzer.js",
+    "test:trade-direction": "npm run build && node dist/test/test-trade-direction-samples.js",
+    "test:ws-client": "npm run build && node dist/test/test-websocket-client.js",
+    "test:subscription-manager": "npm run build && node dist/test/test-subscription-manager.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src --ext .ts",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "solana",
+    "blockchain",
+    "trade-tracker",
+    "jito",
+    "shredstream"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.30.1",
+    "@grpc/grpc-js": "^1.10.9",
+    "@grpc/proto-loader": "^0.7.13",
+    "@solana/web3.js": "^1.95.4",
+    "borsh": "^1.0.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.1",
+    "solana-dex-parser": "^2.6.7",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@jest/globals": "^30.2.0",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.10.5",
+    "@types/ws": "^8.5.13",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "@typescript-eslint/parser": "^8.18.1",
+    "eslint": "^9.17.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
